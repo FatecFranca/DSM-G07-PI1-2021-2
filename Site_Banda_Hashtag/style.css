@@ -266,7 +266,7 @@ section > article > h1 {
 
 aside {
   display: flex;
-  justify-content: left;  /* alinhamento inicial */
+  justify-content: center;  /* alinhamento inicial */
   align-items: center;  /* centralização vertical */
   background-color: #000000;
   margin: 20px;
@@ -286,7 +286,7 @@ aside a {
 }
 
 aside a:hover {
-  color: var(--cor-prim);
+  color: white;
   text-decoration: underline;
 }
 
@@ -344,13 +344,14 @@ aside article img {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-style: italic;
   text-align: center;
-  color: #000000;
+  color: white;
   text-shadow: 1px 1px 2px var(--cor-fundo-clara);
   padding: 8px 8px 0 8px;
 }
 
 .pagina-interna p {
-  text-align: left;
+  color: white;
+  text-align: center;
   margin-bottom: 12px;
   line-height: 1.2;
   width: 100%;
@@ -382,7 +383,7 @@ aside article img {
 }
 
 .pagina-interna a:hover {
-  color: var(--cor-prim);
+  color: white;
   text-decoration: underline;
 }
 
