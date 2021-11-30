@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@100&display=swap');
+
+/* Variáveis */
+:root {
+  --cor-prim: #000000; 
+  --cor-prim-clara:#cccccc;
+  --cor-secun: #525252;
+  --cor-secun-clara: #cccccc;
+  --cor-fundo: #000000;
+  --cor-fundo-clara: #000000;
+  --cor-texto: #000000;
+  --fonte-texto: 'Fredoka', sans-serif;
+  --fonte-titulo: 'Montserrat', serif;
+}
+
+/************* CSS reset **************************/
+* { /* Todos os elementos */
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* a borda faz parte das dimensões do elemento */
+  /*background-color: var(--cor-fundo);
+  color: var(--cor-texto);*/
+}
+/*************************************************/
+html {
+  font-size: 16px;
+  scroll-behavior: smooth; /* Rolagem suave */
+}
+header {
+  display: flex;
+  justify-content: space-between;  /* espaço intermediário */
+  align-items: center;  /* centralização vertical */
+  background-color: #000000;
+  min-height: 30px; /* altura mínima */
+  flex-wrap: wrap;  /* força a quebra de linhas entre elementos flex */
+}
+#img-logo {
+  background-color: transparent;
+  margin: 20px;
+  width: 120px;
+  height: 120px;
+}
+
+/* nav #social */
+#social ul {
+  list-style: none;
+  display: flex;
+  margin: 20px;
+}
+
+#social ul li a {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  color:#cccccc;
+  text-decoration: none;
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+}
+
+#social ul li a img {
+  width: 40px;
+}
+
+#social ul li a span {
+  margin-left: 6px;
+}
+
+#menu-principal {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  align-items: center;  /* centralização vertical */
+  background-color: #525252;
+  min-height: 25px; /* altura mínima */
+  width: 100%;
+}
+#menu-principal ul { /* Afeta o <ul> dentro de #menu-principal */
+  list-style: none; /* Tira a decoração dos itens da lista */
+  display: flex;  /* Container flex - todos os itens filhos na horizontal por padrão */
+}
+#menu-principal ul li {
+  height: 36px;
+  margin: 0 10px; /* 0 topo, fundo; 10px esquerda e direita */
+  display: flex;
+}
+#menu-principal ul li a {
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+  height: 36px;
+  align-items: center;
+  display: flex;
+  padding: 0 10px;
+  color: #ffffff;
+  text-decoration: none; /* Sem sublinhado */
+  background-color: #525252;
+  transition: 300ms; /* Afeta a velocidade dos efeitos do hover */
+}
+/* Quando o mouse passa sobre o link do menu */
+#menu-principal ul li a:hover {
+  /* Filtro que escurece a cor do item (cor de frente + cor de fundo 
+    brightness < 1: escurece
+    brightness > 1: clareia
+  */
+  filter: brightness(1.2);
+}
+
+#menu-contraido {
+  display: inline-block;
+  position: relative;
+}
+
+/* Input checkbox e o span têm o mesmo tamanho e estão um sobre o outro */
+#menu-contraido input, #menu-contraido span {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#menu-contraido input {
+  /* Quanto maior o z-index, mais acima (pensando em camadas) o elemento estará.
+     O padrão do z-index é 0. */
+  z-index: 100;
+  opacity: 0;   /* Esconde o checkbox */
+  display: none;
+}
+
+#menu-contraido span {
+  display: block;
+  background-color: var(--cor-prim);
+  border-radius: 4px;
+  border: 2px solid var(--cor-texto);
+  background-image: url('img/menu-icon-48x48.png');
+  background-size: 40px;
+  background-position: center center;
+  cursor: pointer;  /* Cursor de "mãozinha" para links */
+  display: none;
+}
+
+/* O seletor ~ seleciona o elemento irmão */
+#menu-contraido input:checked ~ span {
+  background-image: url('img/close-icon-48x48.png');
+}
+
+main {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  align-items: stretch;  /* filhos com 100% da altura do pai */
+  min-height: 200px; /* altura mínima */
+  background-color: var(--cor-fundo-clara);
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;  /* distribui o espaço entre os itens filhos */
+  align-items: center;  /* centralização vertical */
+  background-color: #cccccc;
+  min-height: 50px; /* altura mínima */
+  width: 100%;
+  padding: 20px;
+  color: #000000;
+  
+}
+
+/* Links dentro do footer */
+footer a {
+  color: var(--cor-prim);
+  text-decoration: none; /* sem sublinhado */
+  
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+#img-footer {
+  background-color: transparent;
+  margin: 10px;
+  width: 110px;
+  height: 110px;
+}
+
+section {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  align-items: center;  /* centralização vertical */
+  flex-direction: column; /* itens filhos em coluna (na vertical) */
+  background-color: transparent;
+  width: 100%;
+  margin: 20px;
+}
+
+/* Regra para o título h1 que está dentro de section */
+section > h1 { /* O sinal de > indica que serão atingidos apenas
+  os h1 FILHOS DIRETOS de section */
+  text-align: center;
+  width: 100%;
+  color: #ffffff;
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* Regra para os títulos h1 que estão dentro dos articles do section */
+section > article > h1 {
+  text-align: right;
+  width: 100%;
+  color: #000000;
+  font-family: var(--fonte-titulo);
+  font-size: 1.0rem;
+}
+
+/* Classe cartao-carro */
+.cartao-banda {
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  width: 300px;
+  height: 360px;
+  margin: 20px;
+  border-radius: 16px;
+}
+
+/* Regra para link de .cartao-carro */
+.cartao-banda a {
+  text-decoration: none;  
+}
+
+.cartao-banda a div {
+  transition: 400ms;
+}
+
+/* Regra para o link de .cartao-carro quando o mouse sobrevoa */
+.cartao-banda a:hover div {
+  filter: brightness(1.2);
+  box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.15);
+}
+
+/* Regra para a div interna de .cartao-carro */
+.cartao-banda div {
+  height: 360px;
+  border-radius: 16px;
+}
+
+/* Regra para imagens dentro de .cartao-carro */
+.cartao-banda img {
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.cartao-banda h1 {
+  margin: 8px;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-size: 1.75rem;
+  color: #000000;
+  text-align: center;
+  padding: 0px;
+}
+
+.cartao-banda p {
+  color: #000000;
+  margin: 0 20px;
+}
+
+aside {
+  display: flex;
+  justify-content: left;  /* alinhamento inicial */
+  align-items: center;  /* centralização vertical */
+  background-color: #000000;
+  margin: 20px;
+  border-radius: 16px;
+  width: 25%;
+  padding: 8px;
+  color: #cccccc;
+  font-size: 1.0rem;
+  flex-direction: column;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+/* Links que estão dentro do aside */
+aside a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;  /* Tira o sublinhado */
+}
+
+aside a:hover {
+  color: var(--cor-prim);
+  text-decoration: underline;
+}
+
+/* Articles que estão dentro de aside */
+aside article {
+  text-align: center;
+  margin: 50px 0;
+  padding: 10px 10px;
+  border: 3px groove #ffffff;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+article {
+  display: flex;
+  justify-content: center;  /* centralização horizontal */
+  flex-wrap: wrap;
+  align-items: center;  /* centralização vertical */
+  background-color: transparent;
+  margin: 5px;
+  min-height: 100px;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+aside article img {
+  text-align: center;
+  margin: 8px 0;
+  padding: 8px;
+  border: 3px groove #000000;
+  border-radius: 8px;
+  width: 300px;
+}
+
+
+.pagina-interna {
+  color: var(--cor-texto);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pagina-interna figure {
+  background-color: #525252;
+  padding: 20px;
+  border-radius: 16px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.pagina-interna figure img {
+  width: 100%;
+  max-width: 800px;
+}
+
+.pagina-interna figure figcaption {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-style: italic;
+  text-align: center;
+  color: #000000;
+  text-shadow: 1px 1px 2px var(--cor-fundo-clara);
+  padding: 8px 8px 0 8px;
+}
+
+.pagina-interna p {
+  text-align: left;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  width: 100%;
+  font-size: 1.2rem;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.pagina-interna section h2 {
+  text-align: left;
+  width: 100%;
+  color: darkred;
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.pagina-interna section h1 {
+  font-family: 'Fredoka', Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: bold;
+  text-align: left;  
+}
+
+.pagina-interna a {
+  color: var(--cor-prim-clara);
+  text-decoration: none;
+}
+
+.pagina-interna a:hover {
+  color: var(--cor-prim);
+  text-decoration: underline;
+}
+
+/**************************************************
+             REGRAS DE RESPONSIVIDADE
+***************************************************/
+
+/* Computadores com tela pequena */
+@media (max-width: 1200px) {
+  /*body {
+    filter: hue-rotate(45deg);
+  }*/
+
+  /* Esconde o texto das redes sociais */
+  #social ul li a span {
+    display: none; /* Não preserva o espaço do elemento */
+  }
+
+  /* Ajusta o flex-direction do main para column para
+    passar o aside para baixo */
+  main {
+    flex-direction: column;
+  }
+
+  /* section e aside passam a ter largura de 100% */
+  section, aside {
+    /* Usa a função calc() para descontar os 40px das margens
+      laterais dos elementos e evitar rolagem horizontal */
+    width: calc(100% - 40px);
+  }
+
+  /* Os anúncios do article ficam na horizontal */
+  aside {
+    flex-direction: row;
+    /* Faz com que os articles fiquem com a mesma altura */
+    align-items: stretch;
+  }
+
+  aside article {
+    margin: 0 30px;
+  }
+}
+
+/* Dispositivos (tablets) */
+@media (max-width: 992px) {
+  /*body {
+    filter: hue-rotate(90deg);
+  }*/
+  /* POR ENQUANTO não necessita de ajuste */
+}
+
+/* Dispositivos (celulares) médios */
+@media (max-width: 768px) {
+  /*body {
+    filter: hue-rotate(135deg);
+  }*/
+
+  #menu-principal {
+    min-height: 56px;
+    padding: 0;
+    margin-top: 0;
+  }
+
+  #menu-contraido {
+    margin-top: 40px;
+    width: 100%;
+  }
+
+  #menu-contraido input, #menu-contraido span {
+    display: block; /* Reexibe o botão do menu */
+    left: 20px;
+    top: -38px;
+  }
+
+  #menu-contraido ul {
+    display: none;    /* Esconder o menu */
+    margin-top: 30px;
+  }
+
+  #menu-contraido ul li {
+    display: block;
+    margin: 6px 0;
+  }
+
+  #menu-contraido ul li a {
+    width: 100%;
+    display: flex;
+  }
+
+  #menu-contraido input:checked ~ ul {
+    display: block; /* Reexibe o menu quando o checkbox for marcado */
+  }
+
+  #menu-contraido input:checked,  #menu-contraido input:checked ~ span {
+    top: -30px;
+  }
+
+  /* Os anúncios do article voltam a ficar na vertical */
+  aside {
+    flex-direction: column;
+    /* "Desliga" o stretch do breakpoint anterior */
+    align-items: flex-start;
+  }
+
+  aside article {
+    margin: 30px 0;
+  }
+
+  /* Empilha os elementos do footer */
+  footer {
+    flex-direction: column;
+  }
+
+  footer img, footer address {
+    margin-bottom: 30px;
+  }
+
+
+
+
+}
+
+/* Dispositivos (celulares) pequenos */
+@media (max-width: 576px) {
+  /*body {
+    filter: hue-rotate(180deg);
+  }*/
+
+  /* Empilha os elementos do header */
+  header {
+    flex-direction: column;
+  }
+}
+
+/* O padrão do nosso CSS é para telas > 1200px */
